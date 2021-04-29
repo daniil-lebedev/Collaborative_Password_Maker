@@ -1,6 +1,6 @@
 import random
 import string
-#Словарь
+#Словари
 letters_low = string.ascii_lowercase
 letters_up = string.ascii_uppercase
 password = []
@@ -12,11 +12,12 @@ def choice1():
 		password.append(random.choice(letters_up))
 	for lowletter in range(4):
 		password.append(random.choice(letters_low))
-
+#Функция для второго случая
 def choice2():
 	number = int(input("Enter amound of numbers:\n"))
 	upletter = int(input("Enter amound of uppercase letters:\n"))
 	lowletter = int(input("Enter amound of lowercase letters:\n"))
+	#Определение сложности пароля
 	if number + upletter + lowletter <8:
 		print("This password is too short try another one")
 		choice2()
@@ -26,6 +27,7 @@ def choice2():
 		print("This password is medium")
 	else:
 		print("This password is good")
+	#Создание пароля по параметрам юзера
 	for number in range(number):
 		password.append(random.randrange(9))
 	for upletter in range(upletter):
@@ -46,4 +48,6 @@ def start():
     	start()
 start()
 random.shuffle(password)
-print("Your password is: ", password)
+#Преобразуем изначальный пароль(список) в пароль без пробелов и запятых
+strpassword = "".join([str(_) for _ in password])
+print("Your password is:", strpassword)
